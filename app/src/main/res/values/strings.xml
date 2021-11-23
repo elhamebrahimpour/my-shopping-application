@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ShoppingProject</string>
+    <string name="nav_title_home">خانه</string>
+    <string name="nav_title_basket">سبد خرید</string>
+    <string name="nav_title_profile">حساب کاربری</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_basket">title_basket</string>
+</resources>

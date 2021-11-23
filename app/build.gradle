@@ -1,0 +1,67 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    buildFeatures {
+        viewBinding  true
+    }
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.elham.shoppingproject"
+        minSdk 21
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    //banner slider:
+    implementation 'com.ss.bannerslider:bannerslider:2.0.0'
+    //glide:
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    //view pager2:
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    //room:
+    implementation("androidx.room:room-runtime:2.3.0")
+    annotationProcessor("androidx.room:room-compiler:2.3.0")
+    kapt("androidx.room:room-compiler:2.3.0")
+    //dbInspector + recyclerView:
+    debugImplementation "com.infinum.dbinspector:dbinspector:5.4.1"
+    releaseImplementation "com.infinum.dbinspector:dbinspector-no-op:5.4.1"
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
+    //counter:
+    implementation 'com.daasuu:CountAnimationTextView:0.1.2'
+    //mapBox:
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.0.0'
+}
