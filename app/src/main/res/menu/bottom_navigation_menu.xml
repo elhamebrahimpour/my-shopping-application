@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:title="@string/nav_title_profile"
-        android:id="@+id/title_profile"
+        android:id="@+id/title_login"
         android:enabled="true"
         android:icon="@drawable/profile"/>
     <item
