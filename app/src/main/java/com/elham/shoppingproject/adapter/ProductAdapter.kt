@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
-class ProductAdapter(var productList: List<Product>, var context: Context,
+class ProductAdapter(var productList: MutableList<Product>, var context: Context,
                      var addProduct: AddProduct)
     : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
     var onRecyclerViewItemClicked: OnRecyclerViewItemClicked? =null

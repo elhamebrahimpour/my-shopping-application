@@ -17,7 +17,7 @@ import com.elham.shoppingproject.service.OnRecyclerViewItemClicked
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
-class ProductBestSaleAdapter(var productList:List<Product>, var context: Context, var addProduct: AddProduct):
+class ProductBestSaleAdapter(var productList:MutableList<Product>, var context: Context, var addProduct: AddProduct):
     RecyclerView.Adapter<ProductBestSaleAdapter.BestSaleViewHolder>() {
     var onRecyclerViewItemClicked: OnRecyclerViewItemClicked? =null
 

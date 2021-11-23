@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.elham.shoppingproject.R
@@ -21,6 +22,7 @@ class BasketFragment : Fragment() {
     private var productDataBase: Database? = null
     private var executor: Executor? = null
     private var recyclerViewBasket:RecyclerView?=null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,11 +38,11 @@ class BasketFragment : Fragment() {
 
     }
 
-    fun basketExhibition(){
+    private fun basketExhibition(){
         productDataBase = Database.getInstance(context?.applicationContext)
         executor = Executors.newSingleThreadExecutor()
         (executor as ExecutorService?)?.execute{
-            val productList: List<Product> = productDataBase!!.productDao().getAllProduct()
+            val productList= productDataBase!!.productDao().getAllProduct() as MutableList<Product>
             activity?.runOnUiThread{
                 val basketAdapter = BasketAdapter(productList, requireContext().applicationContext)
                 basketAdapter.setOnAdapterUpdate(object : OnAdapterUpdate {

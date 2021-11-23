@@ -1,5 +1,6 @@
 package com.elham.shoppingproject.views
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -37,12 +38,13 @@ class DetailsActivity : AppCompatActivity() {
         //------------details
         detailsLoading()
     }
-    fun detailsLoading(){
+    @SuppressLint("SetTextI18n")
+    private fun detailsLoading(){
         val data = intent?.extras?.get("keyProduct") as Product
-        binding.txtTitle.text = data.title
-        Glide.with(this).load(data.imageUrl).into(binding.imgProductDetail)
-        binding.txtPrice.text = data.seasonSalePrice.toString()
-        binding.txtBestSalePrice.text=data.bestSalePrice.toString()
+        binding.txtTitle.text =  "نام محصول: " + data.title
+                Glide.with(this).load(data.imageUrl).into(binding.imgProductDetail)
+        binding.txtPrice.text = "قیمت فعلی: " + data.seasonSalePrice.toString()
+        binding.txtBestSalePrice.text= "قیمت تخفیفی: " + data.bestSalePrice.toString()
     }
     private fun showRedMarker(){
         hoverMarker= ImageView(this)

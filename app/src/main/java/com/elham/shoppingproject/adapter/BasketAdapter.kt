@@ -15,15 +15,16 @@ import com.elham.shoppingproject.database.Database
 import com.elham.shoppingproject.model.Product
 import com.elham.shoppingproject.service.OnAdapterUpdate
 import org.jetbrains.annotations.NotNull
+import java.lang.Exception
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
-class BasketAdapter (var productList: List<Product>, var context: Context):
+class BasketAdapter (var productList: MutableList<Product>, var context: Context):
     RecyclerView.Adapter<BasketAdapter.BasketViewHolder>(){
     private var executor: Executor? = Executors.newSingleThreadExecutor()
     var productDatabase: Database = Database.getInstance(context)
-
     private lateinit var onAdapterUpdate: OnAdapterUpdate
+
     @SuppressLint("NotifyDataSetChanged")
     fun setOnAdapterUpdate(onAdapterUpdate: OnAdapterUpdate) {
         this.onAdapterUpdate = onAdapterUpdate
@@ -50,6 +51,9 @@ class BasketAdapter (var productList: List<Product>, var context: Context):
         holder.imageViewMin!!.setOnClickListener {
             MinProductCount(productList[position])
         }
+        holder.imgDelete!!.setOnClickListener {
+            DeleteProduct(productList[position])
+        }
     }
     override fun getItemCount(): Int {
         return productList.size
@@ -63,6 +67,7 @@ class BasketAdapter (var productList: List<Product>, var context: Context):
         var textViewCounter: TextView?=null
         var imageViewAdd: ImageView?=null
         var imageViewMin: ImageView?=null
+        var imgDelete:ImageView?=null
         init {
             imgBasket=itemView.findViewById(R.id.imgBasket)
             txtTitleBasket=itemView.findViewById(R.id.txtTitleBasket)
@@ -71,6 +76,7 @@ class BasketAdapter (var productList: List<Product>, var context: Context):
             textViewCounter=itemView.findViewById(R.id.textViewCounter)
             imageViewAdd=itemView.findViewById(R.id.imageViewAdd)
             imageViewMin=itemView.findViewById(R.id.imageViewMin)
+            imgDelete=itemView.findViewById(R.id.imgDelete)
         }
     }
     private fun AddProductCount(product: Product) {
@@ -86,5 +92,16 @@ class BasketAdapter (var productList: List<Product>, var context: Context):
             }
             onAdapterUpdate.onAdapterUpdate()
         }
+    }
+    fun DeleteProduct(product: Product) {
+        executor!!.execute {
+            try {
+                productDatabase.productDao().deleteProduct(product)
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+            }
+        }
+        productList.remove(product)
+        onAdapterUpdate.onAdapterUpdate()
     }
 }

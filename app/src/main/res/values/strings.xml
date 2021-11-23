@@ -6,4 +6,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_basket">title_basket</string>
+    <string name="edtxtPassword">رمز عبور</string>
+    <string name="buttonLogin">ورود</string>
+    <string name="edtxtEmailAddress">ایمیل/نام کاربری</string>
+    <string name="countNumber">1</string>
+    <string name="baseTitle">فروشگاه ورزشی</string>
+    <string name="bestSale">فروش ویژه</string>
+    <string name="seasonSale">فروش ویژه فصلی</string>
+    <string name="price">قیمت محصول:</string>
+    <string name="productTitle">نام محصول:</string>
+    <string name="details">جزئیات محصول</string>
+    <string name="addToButton">افزودن به سبد خرید</string>
+    <string name="bestPrice">160.000t</string>
 </resources>
