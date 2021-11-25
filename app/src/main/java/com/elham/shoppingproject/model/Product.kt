@@ -20,6 +20,7 @@ data class Product(@ColumnInfo(name = "product_title") var title:String,
     @ColumnInfo(name = "product_id")
     var id:String = UUID.randomUUID().toString()
 
+    @IgnoredOnParcel
     @ColumnInfo(name = "product_bestSalePrice")
     var bestSalePrice: Double?=null
 

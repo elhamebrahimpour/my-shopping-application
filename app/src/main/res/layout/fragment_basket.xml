@@ -10,7 +10,7 @@
         android:id="@+id/toolBarBasket"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/primaryColor"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="سبد خرید من"
-            android:textColor="@color/primaryTextColor"
+            android:textColor="@color/black"
             android:textSize="24sp" />
     </com.google.android.material.appbar.MaterialToolbar>
 

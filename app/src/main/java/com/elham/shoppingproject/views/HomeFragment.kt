@@ -18,15 +18,19 @@ import com.elham.shoppingproject.adapter.BannerSliderAdapter
 import com.elham.shoppingproject.adapter.ProductAdapter
 import com.elham.shoppingproject.adapter.ProductBestSaleAdapter
 import com.elham.shoppingproject.database.Database
+import com.elham.shoppingproject.databinding.FragmentBasketBinding
+import com.elham.shoppingproject.databinding.FragmentHomeBinding
 import com.elham.shoppingproject.model.Product
 import com.elham.shoppingproject.service.AddProduct
 import com.elham.shoppingproject.service.ImageLoadingService
+import com.elham.shoppingproject.service.OnAdapterUpdate
 import com.elham.shoppingproject.service.OnRecyclerViewItemClicked
 import ss.com.bannerslider.Slider
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
 class HomeFragment : Fragment() {
+    private lateinit var binding:FragmentHomeBinding
     private lateinit var productDatabase: Database
     var executor: Executor?=null
     private lateinit var countAnimationTextView: CountAnimationTextView
@@ -35,33 +39,33 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding= FragmentHomeBinding.inflate(inflater,container,false)
+        return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //------------initialize the slider:
         Slider.init(ImageLoadingService(this))
-        var slider=view.findViewById<Slider>(R.id.sliderMain).setAdapter(BannerSliderAdapter())
-        countAnimationTextView = view.findViewById(R.id.txtCountAnimation)
+        binding.sliderMain.setAdapter(BannerSliderAdapter())
+        countAnimationTextView = binding.txtCountAnimation
         productDatabase= Database.getInstance(context?.applicationContext)
         executor= Executors.newSingleThreadExecutor()
         recyclerViewSetup()
     }
+
     //------------setup recyclerView:
     private fun recyclerViewSetup(){
-        val recyclerView=view?.findViewById<RecyclerView>(R.id.recyclerViewSeasonBestSale)
-        val recyclerViewBestSale=view?.findViewById<RecyclerView>(R.id.recyclerViewBestSale)
         updateCounter()
         val addProduct: AddProduct =(object :AddProduct{
             override fun addNewProduct() {
                 updateCounter()
-                Toast.makeText(context,"Product is added!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"به سبد خرید شما اضافه شد!", Toast.LENGTH_SHORT).show()
             }
         })
         val productAdapter=
             ProductAdapter(getAllData(),requireContext().applicationContext,addProduct)
-        recyclerView?.adapter=productAdapter
-        recyclerView?.layoutManager= GridLayoutManager(context?.applicationContext,2)
+        binding.recyclerViewSeasonBestSale.adapter =productAdapter
+        binding.recyclerViewSeasonBestSale.layoutManager = GridLayoutManager(context?.applicationContext,2)
         productAdapter.setRecyclerViewItemClicked(object : OnRecyclerViewItemClicked {
             override fun onProductClicked(position: Int, product: Product) {
                 val detailsIntent=Intent(activity,DetailsActivity::class.java)
@@ -69,12 +73,13 @@ class HomeFragment : Fragment() {
                 activity?.startActivity(detailsIntent)
             }
         })
+        //-----------recyclerView BestSale
         val bestSaleAdapter= context?.applicationContext?.let {
             ProductBestSaleAdapter(getBestSaleProducts(),
                 it,addProduct)
         }
-        recyclerViewBestSale?.adapter = bestSaleAdapter
-        recyclerViewBestSale?.layoutManager = LinearLayoutManager(
+        binding.recyclerViewBestSale.adapter = bestSaleAdapter
+        binding.recyclerViewBestSale.layoutManager = LinearLayoutManager(
             context?.applicationContext, LinearLayoutManager.HORIZONTAL, false)
         bestSaleAdapter?.setRecyclerViewItemClicked(object :OnRecyclerViewItemClicked{
             override fun onProductClicked(position: Int, product: Product) {
@@ -85,7 +90,7 @@ class HomeFragment : Fragment() {
         })
     }
 
-    //------------getAllData from list:
+    //------------getAllSeasonProducts from list:
     private fun getAllData():MutableList<Product>  {
         val productList: MutableList<Product> = mutableListOf()
         val product= Product("Climbing Shoes"
@@ -124,11 +129,14 @@ class HomeFragment : Fragment() {
         productList.add(product3)
         return productList
     }
+
+    //------------counter
     @SuppressLint("SetTextI18n")
     fun updateCounter() {
         executor!!.execute {
             val sum = productDatabase.productDao().getSum()
             requireActivity().runOnUiThread {
+                updateCounter()
                 countAnimationTextView.text = sum.toString()+""
             }
         }

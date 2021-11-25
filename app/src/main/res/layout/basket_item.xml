@@ -1,36 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="166dp"
+    android:layout_margin="4dp"
+    android:layout_marginBottom="12dp"
     android:orientation="vertical"
+    app:cardCornerRadius="2dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="166dp">
+        android:layout_height="166dp"
+        android:background="@color/lightPrimary">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView2"
             android:layout_width="160dp"
             android:layout_height="160dp"
-            android:layout_margin="6dp"
             android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
             android:elevation="12dp"
-            app:cardCornerRadius="2dp"
+            app:cardCornerRadius="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/imgBasket"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:scaleType="centerCrop"
@@ -45,7 +49,7 @@
             android:layout_marginEnd="8dp"
             android:text="@string/productTitle"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/cardView2"
@@ -58,7 +62,7 @@
             android:layout_marginTop="4dp"
             android:text="@string/price"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/txtTitleBasket"
@@ -81,9 +85,10 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="140dp"
+            android:layout_width="90dp"
             android:layout_height="30dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/txtBestPriceBasket"
@@ -95,17 +100,17 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="start"
-                android:layout_margin="10dp"
                 android:src="@drawable/ic_min" />
 
             <TextView
                 android:id="@+id/textViewCounter"
-                android:layout_width="40dp"
+                android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
+                android:background="@color/black"
+                android:gravity="center"
                 android:text="@string/countNumber"
-                android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -114,7 +119,6 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="end"
-                android:layout_margin="10dp"
                 android:src="@drawable/ic_added" />
         </LinearLayout>
 
@@ -123,9 +127,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="6dp"
             android:src="@drawable/ic_clear"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</LinearLayout>
+
+</androidx.cardview.widget.CardView>

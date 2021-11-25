@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.elham.shoppingproject.adapter.ViewPagerAdapter
 import com.elham.shoppingproject.databinding.ActivityMainBinding
+import com.google.android.material.badge.BadgeDrawable
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -24,5 +25,6 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+        binding.btnNavigation.selectedItemId=R.id.title_home
     }
 }

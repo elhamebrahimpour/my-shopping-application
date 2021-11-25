@@ -1,5 +1,6 @@
 package com.elham.shoppingproject.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.elham.shoppingproject.R
 import com.elham.shoppingproject.database.Database
 import com.elham.shoppingproject.model.Product
 import com.elham.shoppingproject.service.AddProduct
+import com.elham.shoppingproject.service.OnAdapterUpdate
 import com.elham.shoppingproject.service.OnRecyclerViewItemClicked
 import org.jetbrains.annotations.NotNull
 import java.util.concurrent.Executor

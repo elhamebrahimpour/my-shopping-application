@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primaryColor">#000038</color>
-    <color name="primaryLightColor">#2c2b63</color>
+    <color name="primaryLightColor">#293559</color>
     <color name="primaryDarkColor">#000015</color>
     <color name="secondaryColor">#d63329</color>
     <color name="secondaryLightColor">#ff6953</color>
@@ -10,5 +10,6 @@
     <color name="secondaryTextColor">#ffffff</color>
     <color name="black">#FF000000</color>
     <color name="red">#a30000</color>
-    <color name="lightBlue">#004c8c</color>
+    <color name="white">#ffffff</color>
+    <color name="lightPrimary">#D2D9F1</color>
 </resources>

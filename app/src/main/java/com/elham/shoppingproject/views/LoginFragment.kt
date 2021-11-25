@@ -1,10 +1,12 @@
 package com.elham.shoppingproject.views
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.elham.shoppingproject.databinding.FragmentLoginBinding
 
@@ -23,18 +25,21 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonLogin.setOnClickListener {
             adminLogin()
+            val hide: InputMethodManager =
+                requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            hide.hideSoftInputFromWindow(requireActivity().currentFocus!!.windowToken, 0)
         }
     }
-
+    //------------admin login
     private fun adminLogin(){
         if (binding.edtxtEmailAddress.text.isNullOrEmpty()&&
             binding.edtxtPassword.text.isNullOrEmpty()) {
-            Toast.makeText(context, "Blanks are empty, fill them!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "فیلدها را کامل نمایید! ", Toast.LENGTH_SHORT).show()
         } else if (binding.edtxtEmailAddress.text.toString()=="admin@gmail.com"
             && binding.edtxtPassword.text.toString() == "123456"){
-            Toast.makeText(context,"${binding.edtxtEmailAddress} is logged in successful!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"${binding.edtxtEmailAddress} ورود با موفقیت ", Toast.LENGTH_SHORT).show()
         }else{
-            Toast.makeText(context,"Login failed!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"عدم تطابق نام کاربری/رمز عبور", Toast.LENGTH_SHORT).show()
         }
     }
 }

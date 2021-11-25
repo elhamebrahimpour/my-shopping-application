@@ -6,7 +6,7 @@
     android:layout_height="270dp"
     android:layout_gravity="end"
     android:layout_margin="4dp"
-    android:backgroundTint="#ffffff"
+    android:background="#ffffff"
     android:elevation="12dp"
     app:cardCornerRadius="4dp">
 

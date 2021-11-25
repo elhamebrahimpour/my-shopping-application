@@ -35,17 +35,18 @@ class DetailsActivity : AppCompatActivity() {
                 showRedMarker()
             }
         }
-        //------------details
         detailsLoading()
     }
+    //-----------details of a product
     @SuppressLint("SetTextI18n")
     private fun detailsLoading(){
         val data = intent?.extras?.get("keyProduct") as Product
         binding.txtTitle.text =  "نام محصول: " + data.title
                 Glide.with(this).load(data.imageUrl).into(binding.imgProductDetail)
-        binding.txtPrice.text = "قیمت فعلی: " + data.seasonSalePrice.toString()
+        binding.txtPrice.text = "قیمت: " + data.seasonSalePrice.toString()
         binding.txtBestSalePrice.text= "قیمت تخفیفی: " + data.bestSalePrice.toString()
     }
+    //-----------redMarker
     private fun showRedMarker(){
         hoverMarker= ImageView(this)
         hoverMarker!!.setBackgroundResource(R.drawable.ic_location_on)
@@ -56,6 +57,7 @@ class DetailsActivity : AppCompatActivity() {
         hoverMarker!!.layoutParams=imageLocation
         binding.MapViewDetail.addView(hoverMarker)
     }
+    //-----------current Location
     private fun goToCurrentLocation(mapboxMap: MapboxMap, latitude:Double, longitude:Double){
         val cameraPosition= CameraPosition.Builder().target(LatLng(latitude,longitude))
             .zoom(14.0).tilt(30.0).build()

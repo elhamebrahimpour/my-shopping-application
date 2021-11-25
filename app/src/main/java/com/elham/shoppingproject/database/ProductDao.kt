@@ -12,7 +12,7 @@ interface ProductDao {
     fun insertProduct(product: Product)
 
     @Update
-    fun updateProduct(product: Product)
+    fun updateProduct(product:Product)
 
     @Delete
     fun deleteProduct(product: Product)
