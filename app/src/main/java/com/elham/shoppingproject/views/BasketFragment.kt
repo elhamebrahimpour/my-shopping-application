@@ -59,4 +59,10 @@ class BasketFragment : Fragment() {
             }
         }
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onResume() {
+        super.onResume()
+        binding.recyclerViewBasket.adapter?.notifyDataSetChanged()
+    }
 }

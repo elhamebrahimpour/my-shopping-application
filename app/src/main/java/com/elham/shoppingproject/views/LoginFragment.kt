@@ -24,22 +24,29 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonLogin.setOnClickListener {
-            adminLogin()
-            val hide: InputMethodManager =
-                requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            hide.hideSoftInputFromWindow(requireActivity().currentFocus!!.windowToken, 0)
+            if (binding.edtxtEmailAddress.text.isNullOrEmpty()&&
+                binding.edtxtPassword.text.isNullOrEmpty()) {
+                Toast.makeText(context, "فیلدها را کامل نمایید! ", Toast.LENGTH_SHORT).show()
+            }else{
+                adminLogin()
+                val hide: InputMethodManager =
+                    requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                hide.hideSoftInputFromWindow(requireActivity().currentFocus!!.windowToken, 0)
+            }
         }
     }
     //------------admin login
-    private fun adminLogin(){
-        if (binding.edtxtEmailAddress.text.isNullOrEmpty()&&
-            binding.edtxtPassword.text.isNullOrEmpty()) {
-            Toast.makeText(context, "فیلدها را کامل نمایید! ", Toast.LENGTH_SHORT).show()
-        } else if (binding.edtxtEmailAddress.text.toString()=="admin@gmail.com"
-            && binding.edtxtPassword.text.toString() == "123456"){
-            Toast.makeText(context,"${binding.edtxtEmailAddress} ورود با موفقیت ", Toast.LENGTH_SHORT).show()
-        }else{
-            Toast.makeText(context,"عدم تطابق نام کاربری/رمز عبور", Toast.LENGTH_SHORT).show()
+    private fun adminLogin() {
+        if (binding.edtxtEmailAddress.text.toString() == "admin@gmail.com"
+            && binding.edtxtPassword.text.toString() == "123456"
+        ) {
+            Toast.makeText(
+                context,
+                "${binding.edtxtEmailAddress} ورود با موفقیت ",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
+            Toast.makeText(context, "عدم تطابق نام کاربری/رمز عبور", Toast.LENGTH_SHORT).show()
         }
     }
 }

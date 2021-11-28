@@ -29,15 +29,18 @@
                 android:padding="2dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_launcher_background" />
-
-            <ImageView
-                android:id="@+id/imgAddToBasket"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="end"
-                android:layout_margin="6dp"
-                android:src="@drawable/basket" />
         </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/imgAddToBasket"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:layout_margin="6dp"
+            android:src="@drawable/basket"
+            app:layout_constraintBottom_toBottomOf="@+id/txtBestProductTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtBestProductTitle" />
 
         <TextView
             android:id="@+id/txtBestProductTitle"
@@ -50,7 +53,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgAddToBasket"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <TextView

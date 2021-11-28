@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingProject">
         <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.DetailsActivity"
             android:exported="false" />
         <activity
