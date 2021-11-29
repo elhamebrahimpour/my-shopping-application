@@ -24,7 +24,7 @@ class DetailsActivity : AppCompatActivity() {
     private var hoverMarker: ImageView?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Mapbox.getInstance(this,"sk.eyJ1IjoiZWxoYW1lYiIsImEiOiJja3c1MDkxZ3IwYnVtMm9sajZ0NzU2eG5jIn0.sCaEPIeMgI2JV1bWwVK1rg")
+        Mapbox.getInstance(this,"sk.eyJ1IjoiZWxoYW1lYiIsImEiOiJja3drcjVmbjExdWlkMm9tanV6eHNubnd2In0.DsYkONHYwRK0L9qn72NAYQ")
         binding= ActivityDetailsBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
         binding.MapViewDetail.onCreate(savedInstanceState)

@@ -2,13 +2,14 @@ package com.elham.shoppingproject.views
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.elham.shoppingproject.databinding.FragmentLoginBinding
+
 
 class LoginFragment : Fragment() {
     private lateinit var binding:FragmentLoginBinding
@@ -32,6 +33,7 @@ class LoginFragment : Fragment() {
                 val hide: InputMethodManager =
                     requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 hide.hideSoftInputFromWindow(requireActivity().currentFocus!!.windowToken, 0)
+                //launchFragment()
             }
         }
     }
@@ -48,5 +50,17 @@ class LoginFragment : Fragment() {
         } else {
             Toast.makeText(context, "عدم تطابق نام کاربری/رمز عبور", Toast.LENGTH_SHORT).show()
         }
+        binding.edtxtEmailAddress.setText("")
+        binding.edtxtPassword.setText("")
     }
+
+   /* //------------launchFragment
+    private fun launchFragment(){
+        val homeFragment:HomeFragment=HomeFragment()
+        val fragmentManager: FragmentManager = activity?.supportFragmentManager!!
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.loginContainer, homeFragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }*/
 }

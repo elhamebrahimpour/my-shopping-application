@@ -14,6 +14,7 @@ import com.elham.shoppingproject.R
 import com.elham.shoppingproject.database.Database
 import com.elham.shoppingproject.model.Product
 import com.elham.shoppingproject.service.OnAdapterUpdate
+import com.elham.shoppingproject.service.OnRecyclerViewItemClicked
 import org.jetbrains.annotations.NotNull
 import java.lang.Exception
 import java.util.concurrent.Executor
@@ -21,6 +22,7 @@ import java.util.concurrent.Executors
 
 class BasketAdapter (var productList: MutableList<Product>, var context: Context):
     RecyclerView.Adapter<BasketAdapter.BasketViewHolder>(){
+    private var onRecyclerViewItemClicked: OnRecyclerViewItemClicked? =null
     private var executor: Executor? = Executors.newSingleThreadExecutor()
     var productDatabase: Database = Database.getInstance(context)
     private lateinit var onAdapterUpdate: OnAdapterUpdate
@@ -46,13 +48,16 @@ class BasketAdapter (var productList: MutableList<Product>, var context: Context
         holder.textViewCounter!!.text=product.count.toString()
 
         holder.imageViewAdd!!.setOnClickListener {
-            AddProductCount(productList[position])
+            AddProductCount(productList[holder.absoluteAdapterPosition])
         }
         holder.imageViewMin!!.setOnClickListener {
-            MinProductCount(productList[position])
+            MinProductCount(productList[holder.absoluteAdapterPosition])
         }
         holder.imgDelete!!.setOnClickListener {
-            DeleteProduct(productList[position])
+            DeleteProduct(productList[holder.absoluteAdapterPosition])
+        }
+        holder.itemView.setOnClickListener {
+            onRecyclerViewItemClicked!!.onProductClicked(position,product)
         }
     }
     override fun getItemCount(): Int {
@@ -93,7 +98,7 @@ class BasketAdapter (var productList: MutableList<Product>, var context: Context
             onAdapterUpdate.onAdapterUpdate()
         }
     }
-    fun DeleteProduct(product: Product) {
+    private fun DeleteProduct(product: Product) {
         executor!!.execute {
             try {
                 productDatabase.productDao().deleteProduct(product)
@@ -103,5 +108,8 @@ class BasketAdapter (var productList: MutableList<Product>, var context: Context
         }
         productList.remove(product)
         onAdapterUpdate.onAdapterUpdate()
+    }
+    fun setRecyclerViewItemClicked(onRecyclerViewItemClicked: OnRecyclerViewItemClicked){
+        this.onRecyclerViewItemClicked=onRecyclerViewItemClicked
     }
 }

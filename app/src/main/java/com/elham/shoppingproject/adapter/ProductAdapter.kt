@@ -5,29 +5,28 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.elham.shoppingproject.R
 import com.elham.shoppingproject.database.Database
 import com.elham.shoppingproject.model.Product
 import com.elham.shoppingproject.service.AddProduct
-import com.elham.shoppingproject.service.OnAdapterUpdate
 import com.elham.shoppingproject.service.OnRecyclerViewItemClicked
 import org.jetbrains.annotations.NotNull
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
-class ProductAdapter(var productList: MutableList<Product>, var context: Context,
-                     var addProduct: AddProduct)
+class ProductAdapter(
+    private var productList: MutableList<Product>, var context: Context,
+    var addProduct: AddProduct)
     : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
-    var onRecyclerViewItemClicked: OnRecyclerViewItemClicked? =null
+    private var onRecyclerViewItemClicked: OnRecyclerViewItemClicked? =null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         return ProductViewHolder(LayoutInflater.from(context).inflate(R.layout.season_bestsale_item,parent,false))
     }
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product:Product= productList[position]
         holder.imgProduct?.let { Glide.with(context).load(product.imageUrl).into(it) }

@@ -3,17 +3,15 @@ package com.elham.shoppingproject.views
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.elham.shoppingproject.adapter.BasketAdapter
 import com.elham.shoppingproject.database.Database
 import com.elham.shoppingproject.databinding.FragmentBasketBinding
 import com.elham.shoppingproject.model.Product
 import com.elham.shoppingproject.service.OnAdapterUpdate
+import com.elham.shoppingproject.service.OnRecyclerViewItemClicked
 import java.util.concurrent.Executor
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -32,22 +30,21 @@ class BasketFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         basketExhibition()
     }
 
     //-----------basket list exhibition
     @SuppressLint("NotifyDataSetChanged")
     private fun basketExhibition(){
-        var basketAdapter:BasketAdapter
         productDataBase = Database.getInstance(context?.applicationContext)
         executor = Executors.newSingleThreadExecutor()
         (executor as ExecutorService?)?.execute{
             val productList= productDataBase!!.productDao().getAllProduct() as MutableList<Product>
             activity?.runOnUiThread{
-                basketAdapter = BasketAdapter(productList, requireContext().applicationContext)
+                 val basketAdapter = BasketAdapter(productList, requireContext().applicationContext)
                 basketAdapter.setOnAdapterUpdate(object : OnAdapterUpdate {
                     @SuppressLint("NotifyDataSetChanged")
                     override fun onAdapterUpdate() {
@@ -56,6 +53,14 @@ class BasketFragment : Fragment() {
                 })
                 binding.recyclerViewBasket.adapter = basketAdapter
                 binding.recyclerViewBasket.layoutManager = LinearLayoutManager(requireContext().applicationContext)
+                basketAdapter.setRecyclerViewItemClicked(object :OnRecyclerViewItemClicked{
+                    override fun onProductClicked(position: Int, product: Product) {
+                        val detailsIntent= Intent(activity,DetailsActivity::class.java)
+                        detailsIntent.putExtra("keyProduct",product)
+                        activity?.startActivity(detailsIntent)
+                    }
+
+                })
             }
         }
     }
