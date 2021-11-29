@@ -48,13 +48,13 @@ class BasketAdapter (var productList: MutableList<Product>, var context: Context
         holder.textViewCounter!!.text=product.count.toString()
 
         holder.imageViewAdd!!.setOnClickListener {
-            AddProductCount(productList[holder.absoluteAdapterPosition])
+            AddProductCount(productList[position])
         }
         holder.imageViewMin!!.setOnClickListener {
-            MinProductCount(productList[holder.absoluteAdapterPosition])
+            MinProductCount(productList[position])
         }
         holder.imgDelete!!.setOnClickListener {
-            DeleteProduct(productList[holder.absoluteAdapterPosition])
+            DeleteProduct(productList[position])
         }
         holder.itemView.setOnClickListener {
             onRecyclerViewItemClicked!!.onProductClicked(position,product)

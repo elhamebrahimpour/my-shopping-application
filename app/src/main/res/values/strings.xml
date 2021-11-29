@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ShoppingProject</string>
+    <string name="app_name">ShoppingApp</string>
     <string name="nav_title_home">خانه</string>
     <string name="nav_title_basket">سبد خرید</string>
     <string name="nav_title_profile">حساب کاربری</string>
