@@ -9,26 +9,26 @@ import androidx.room.PrimaryKey
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import java.util.*
+import kotlin.math.absoluteValue
 
 @Parcelize
 @Entity
 data class Product(@ColumnInfo(name = "product_title") var title:String,
                    @ColumnInfo(name = "product_imageUrl") var imageUrl:String,
                    @ColumnInfo(name = "product_seasonSalePrice") var seasonSalePrice:Double):Parcelable{
+    @IgnoredOnParcel
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "product_id")
     var id:String = UUID.randomUUID().toString()
-
-    @IgnoredOnParcel
-    @ColumnInfo(name = "product_bestSalePrice")
-    var bestSalePrice: Double?=null
-
     @IgnoredOnParcel
     var count = 0
-    @Ignore
-    internal constructor(title: String, imageUrl: String, seasonSalePrice: Double, bestSalePrice: Double
+
+    @ColumnInfo(name = "product_bestSalePrice")
+    var bestSalePrice: Double? =null
+
+    constructor(title: String, imageUrl: String, seasonSalePrice: Double, bestSalePrice: Double
     ):this(title,imageUrl, seasonSalePrice){
-        this.bestSalePrice=bestSalePrice
+        this.bestSalePrice = bestSalePrice
     }
 }

@@ -1,6 +1,5 @@
 package com.elham.shoppingproject.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +25,6 @@ class ProductAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         return ProductViewHolder(LayoutInflater.from(context).inflate(R.layout.season_bestsale_item,parent,false))
     }
-    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product:Product= productList[position]
         holder.imgProduct?.let { Glide.with(context).load(product.imageUrl).into(it) }

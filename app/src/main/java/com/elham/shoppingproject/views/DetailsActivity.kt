@@ -27,7 +27,7 @@ class DetailsActivity : AppCompatActivity() {
         Mapbox.getInstance(this,"sk.eyJ1IjoiZWxoYW1lYiIsImEiOiJja3drcjVmbjExdWlkMm9tanV6eHNubnd2In0.DsYkONHYwRK0L9qn72NAYQ")
         binding= ActivityDetailsBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
-        binding.MapViewDetail.onCreate(savedInstanceState)
+       // binding.MapViewDetail.onCreate(savedInstanceState)
         //------------mapBox initialization
         binding.MapViewDetail.getMapAsync { mapboxMap ->
             mapboxMap.setStyle(Style.MAPBOX_STREETS) {

@@ -93,6 +93,27 @@
                 android:textStyle="bold"
                 tools:ignore="TextContrastCheck" />
         </LinearLayout>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/google"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="140dp"
+            android:layout_marginBottom="40dp"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/instagram"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="190dp"
+            android:layout_marginBottom="40dp"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/telegram"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="240dp"
+            android:layout_marginBottom="40dp"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

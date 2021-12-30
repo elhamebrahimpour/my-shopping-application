@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+        //it's for changing the selected item in navigationBtn
         binding.btnNavigation.selectedItemId=R.id.title_home
     }
 }
