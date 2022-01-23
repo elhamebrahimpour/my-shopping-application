@@ -33,6 +33,7 @@ class ProductBestSaleAdapter(var productList:MutableList<Product>, var context: 
         holder.txtPreviousPrice!!.text= product.seasonSalePrice.toString()
         holder.txtPreviousPrice!!.paintFlags= Paint.STRIKE_THRU_TEXT_FLAG
         holder.txtBestPrice!!.text=product.bestSalePrice.toString()
+
         holder.itemView.setOnClickListener{
             onRecyclerViewItemClicked?.onProductClicked(position,product)
         }

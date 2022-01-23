@@ -44,7 +44,12 @@ class BasketAdapter (var productList: MutableList<Product>, var context: Context
         holder.imgBasket.let { Glide.with(context).load(product.imageUrl).into(it!!) }
         holder.txtTitleBasket!!.text=product.title
         holder.txtPriceBasket!!.text= product.seasonSalePrice.toString()
-        holder.txtBestPriceBasket!!.text=product.bestSalePrice.toString()
+        if (product.bestSalePrice == null){
+            holder.txtBestPriceBasket!!.text = ""
+        }else{
+            holder.txtBestPriceBasket!!.text=product.bestSalePrice.toString()
+        }
+
         holder.textViewCounter!!.text=product.count.toString()
 
         holder.imageViewAdd!!.setOnClickListener {

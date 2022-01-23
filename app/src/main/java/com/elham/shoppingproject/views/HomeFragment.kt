@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding= FragmentHomeBinding.inflate(inflater,container,false)
         return binding.root
@@ -40,6 +40,7 @@ class HomeFragment : Fragment() {
         //------------initialize the slider:
         Slider.init(ImageLoadingService(this))
         binding.sliderMain.setAdapter(BannerSliderAdapter())
+
         countAnimationTextView = binding.txtCountAnimation
         productDatabase= Database.getInstance(context?.applicationContext)
         executor= Executors.newSingleThreadExecutor()
@@ -47,7 +48,7 @@ class HomeFragment : Fragment() {
     }
     //------------setup recyclerView:
     private fun recyclerViewSetup(){
-        updateCounter()
+        //updateCounter()
         val addProduct: AddProduct =(object :AddProduct{
             override fun addNewProduct() {
                 updateCounter()
@@ -107,14 +108,23 @@ class HomeFragment : Fragment() {
     //------------getBestSaleProducts from list:
     private fun getBestSaleProducts():MutableList<Product>  {
         val productList: MutableList<Product> = mutableListOf()
-        val product=Product("سوئیشرت مردانه","https://dkstatics-public.digikala.com/digikala-products/117528170.jpg?x-oss-process=image/resize,m_lfit,h_600,w_600/quality,q_90",
-            600.000,550.000)
+        val product=Product(
+            "سوئیشرت مردانه","https://dkstatics-public.digikala.com/digikala-products/117528170.jpg?x-oss-process=image/resize,m_lfit,h_600,w_600/quality,q_90",
+            600.000).apply {
+                bestSalePrice = 540.00
+        }
         val product1=Product("گرمکن ورزشی زنانه","https://dkstatics-public.digikala.com/digikala-products/abd18a697e583ef421806e063af67e465c630bbb_1607771340.jpg?x-oss-process=image/resize,m_lfit,h_600,w_600/quality,q_90",
-            1100.00,1000.000)
+            1100.00).apply {
+                bestSalePrice = 995.00
+        }
         val product2=Product("ست ورزشی زنانه","https://dkstatics-public.digikala.com/digikala-products/df46c623f82f170aa57784cf1b30b031805f3344_1612420472.jpg?x-oss-process=image/resize,m_lfit,h_600,w_600/quality,q_90",
-            900.000,750.000)
+            900.000).apply {
+            bestSalePrice = 840.00
+        }
         val product3=Product("کاپشن ورزشی زنانه","https://dkstatics-public.digikala.com/digikala-products/116687498.jpg?x-oss-process=image/resize,m_lfit,h_600,w_600/quality,q_90",
-            650.000,600.000)
+            650.000).apply {
+            bestSalePrice = 610.00
+        }
         productList.add(product)
         productList.add(product1)
         productList.add(product2)

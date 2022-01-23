@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.elham.shoppingproject.model.Product
 
-@Database(entities = [Product::class], exportSchema = false, version = 1)
+@Database(entities = [Product::class], exportSchema = false, version = 2)
 abstract class Database: RoomDatabase() {
     abstract fun productDao():ProductDao
     companion object{

@@ -30,6 +30,7 @@ class ProductAdapter(
         holder.imgProduct?.let { Glide.with(context).load(product.imageUrl).into(it) }
         holder.txtProductTitle!!.text = product.title
         holder.txtSeasonSalePrice!!.text= product.seasonSalePrice.toString()
+
         holder.btnAddToBasket?.setOnClickListener {
             product.count=product.count + 1
             val productDataBase: Database = Database.getInstance(context)

@@ -13,9 +13,9 @@ import kotlin.math.absoluteValue
 
 @Parcelize
 @Entity
-data class Product(@ColumnInfo(name = "product_title") var title:String,
-                   @ColumnInfo(name = "product_imageUrl") var imageUrl:String,
-                   @ColumnInfo(name = "product_seasonSalePrice") var seasonSalePrice:Double):Parcelable{
+data class Product(@ColumnInfo(name = "product_title") var title:String?,
+                   @ColumnInfo(name = "product_imageUrl") var imageUrl:String?,
+                   @ColumnInfo(name = "product_seasonSalePrice") var seasonSalePrice:Double?):Parcelable{
     @IgnoredOnParcel
     @PrimaryKey
     @NonNull
@@ -25,10 +25,10 @@ data class Product(@ColumnInfo(name = "product_title") var title:String,
     var count = 0
 
     @ColumnInfo(name = "product_bestSalePrice")
-    var bestSalePrice: Double? =null
+    var bestSalePrice: Double? = null
 
-    constructor(title: String, imageUrl: String, seasonSalePrice: Double, bestSalePrice: Double
+    /*constructor(title: String, imageUrl: String, seasonSalePrice: Double, bestSalePrice: Double
     ):this(title,imageUrl, seasonSalePrice){
         this.bestSalePrice = bestSalePrice
-    }
+    }*/
 }

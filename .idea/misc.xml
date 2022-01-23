@@ -29,8 +29,12 @@
         <entry key="..\:/Users/Elham/AndroidStudioProjects/ShoppingProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher_new.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/Elham/AndroidStudioProjects/ShoppingProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round_new.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/elham/AndroidStudioProjects/ShoppingProject/app/src/main/res/drawable/circle.xml" value="0.2703125" />
+        <entry key="..\:/Users/elham/AndroidStudioProjects/ShoppingProject/app/src/main/res/drawable/rectangle.xml" value="0.2703125" />
         <entry key="..\:/Users/elham/AndroidStudioProjects/ShoppingProject/app/src/main/res/layout/activity_details.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/elham/AndroidStudioProjects/ShoppingProject/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/elham/AndroidStudioProjects/ShoppingProject/app/src/main/res/layout/basket_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/elham/AndroidStudioProjects/ShoppingProject/app/src/main/res/layout/bestsale_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/elham/AndroidStudioProjects/ShoppingProject/app/src/main/res/layout/fragment_basket.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/elham/AndroidStudioProjects/ShoppingProject/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/elham/AndroidStudioProjects/ShoppingProject/app/src/main/res/layout/fragment_login.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/elham/AndroidStudioProjects/ShoppingProject/app/src/main/res/layout/season_bestsale_item.xml" value="0.25416666666666665" />

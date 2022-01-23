@@ -10,6 +10,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.elham.shoppingproject.R
+import com.elham.shoppingproject.database.Database
 import com.elham.shoppingproject.databinding.ActivityDetailsBinding
 import com.elham.shoppingproject.model.Product
 import com.mapbox.mapboxsdk.Mapbox
@@ -22,6 +23,8 @@ import com.mapbox.mapboxsdk.maps.Style
 class DetailsActivity : AppCompatActivity() {
     lateinit var binding: ActivityDetailsBinding
     private var hoverMarker: ImageView?=null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Mapbox.getInstance(this,"sk.eyJ1IjoiZWxoYW1lYiIsImEiOiJja3drcjVmbjExdWlkMm9tanV6eHNubnd2In0.DsYkONHYwRK0L9qn72NAYQ")
@@ -35,8 +38,10 @@ class DetailsActivity : AppCompatActivity() {
                 showRedMarker()
             }
         }
+
         detailsLoading()
     }
+
     //-----------details of a product
     @SuppressLint("SetTextI18n")
     private fun detailsLoading(){
@@ -44,8 +49,11 @@ class DetailsActivity : AppCompatActivity() {
         binding.txtTitle.text =  "نام محصول: " + data.title
                 Glide.with(this).load(data.imageUrl).into(binding.imgProductDetail)
         binding.txtPrice.text = "قیمت: " + data.seasonSalePrice.toString()
-        binding.txtBestSalePrice.text= "قیمت تخفیفی: " + data.bestSalePrice.toString()
+
+        binding.txtBestSalePrice.text = data.bestSalePrice.toString()
+
     }
+
     //-----------redMarker
     private fun showRedMarker(){
         hoverMarker= ImageView(this)
