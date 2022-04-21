@@ -1,5 +1,5 @@
 # my-shopping-application
-kotlin
-material design
-room
-android studio
+* kotlin
+* material design
+* room
+* android studio
