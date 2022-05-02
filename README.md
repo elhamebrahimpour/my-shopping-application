@@ -3,3 +3,4 @@
 * material design
 * room
 * android studio
+* inspector
